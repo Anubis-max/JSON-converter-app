@@ -1,0 +1,50 @@
+#:kivy 2.1.0
+
+<MyGrid>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.278, 0.278, 0.278, 1
+            Rectangle:
+                size: root.width, root.height * 0.1
+
+        Label:
+            text: "please select an image"
+            font_size: 30
+            color: 0, 0, 0, 1
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+        Button:
+            text: "Select image"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.1
+            pos_hint: {'center_x': .1, 'center_y': .05}
+            on_press: root.get_path()
+
+        Button:
+            text: "Enable Drawing"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.1
+            pos_hint: {'center_x': .3, 'center_y': .05}
+            on_press: root.drawing_widget.enable_drawing()
+
+        Button:
+            text: "Disable Drawing"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.1
+            pos_hint: {'center_x': .5, 'center_y': .05}
+            on_press: root.drawing_widget.disable_drawing()
+
+        Button:
+            text: "Clear"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.1
+            pos_hint: {'center_x': .7, 'center_y': .05}
+            on_press: root.drawing_widget.canvas.clear()
+
+        Button:
+            text: "Convert to JSON"
+            size_hint: None, None
+            size: root.width * 0.2, root.height * 0.1
+            pos_hint: {'center_x': .9, 'center_y': .05}
+            on_press: root.drawing_widget.convert()
